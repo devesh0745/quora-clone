@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<li id="post-<%=post._id%>">
+    <% if(locals.user && locals.user.id==post.user.id) {%>
+        <small>
+            <a class="delete-post-button" href="/posts/delete/<%=post._id%>">del</a>
+        </small>
+    <%}%>
+    <%=post.content%>
+    <%=post.user.name%>
+    <br>
+    <form action="/likes/create-post-like" method="post">
+        <input type="hidden" name="post" value="<%= post._id %>">
+        <button type="submit" class="fabutton">
+            <i class="fa-regular fa-thumbs-up"></i>
+        </button>
+        <span><%=post.likes.length%> likes</span>
+    </form>
+    <form action="/dislikes/create-post-dislike" method="post">
+        <input type="hidden" name="post" value="<%= post._id %>">
+        <button type="submit" class="fabutton">
+        <i class="fa-regular fa-thumbs-down"></i>
+        </button>
+        <span><%=post.disLikes.length%> dislikes</span>
+    </form>
+    <br>
+    <div class="post-comment">
+        <%if(locals.user) {%>
+            <form  action="/answers/create" method="post">
+                <input type="text" name="content" id="" placeholder="Type Answer" required>
+                <!--value will pass the post id which will be used in action when form is submitted-->
+                <input type="hidden" name="post" value="<%= post._id %>">
+                <input type="submit" name="" id="">
+            </form>
+        <%}%>
+        <div class="post-answer-list">
+            <ul id="post-answer-<%=post._id%>">
+                <%for(answer of post.answers) {%>
+                    <%-include('_answer')-%>
+                <%}%>    
+            </ul>
+
+        </div>
+    </div>
+    
+</li>
