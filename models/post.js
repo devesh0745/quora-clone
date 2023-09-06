@@ -10,6 +10,10 @@ const postSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
+    user_profile:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
 
     answers:[{
         type:mongoose.Schema.Types.ObjectId,

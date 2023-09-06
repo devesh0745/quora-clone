@@ -27,6 +27,7 @@ by  <%= answer.user.name %>
             <input type="text" name="content" id="" placeholder="Enter comment..." required>
             <!--value will pass the post id which will be used in action when form is submitted-->
             <input type="hidden" name="answer" value="<%= answer._id %>">
+            <input type="hidden" name="post" value="<%= post._id %>">
             <input type="submit" name="" id="">
         </form>
         <%}%>

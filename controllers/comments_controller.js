@@ -1,6 +1,7 @@
 const Post=require('../models/post');
 const Answer=require('../models/answer');
 const Comment=require('../models/comments');
+const Like=require('../models/like');
 
 
 
@@ -11,6 +12,7 @@ module.exports.create=async function(req,res){
                 let comment=await Comment.create({
                 content:req.body.content,
                 user:req.user._id,
+                post:req.body.post,
                 answer:req.body.answer
                 });
                 //It will push the comment in post(comment array)
@@ -41,12 +43,13 @@ module.exports.create=async function(req,res){
 }
 
 
-module.exports.detroyComment=async function(req,res){
+module.exports.destroyComment=async function(req,res){
     try{
         
         const comment=await Comment.findById(req.params.id);
         if(comment.user.toString()==req.user.id){
             let answerId=comment.answer;
+            await Like.deleteMany({likeable:comment._id});
             comment.deleteOne();
 
             const deleteComment=await Answer.findByIdAndUpdate(answerId,{$pull:{comments:req.params.id}});

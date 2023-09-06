@@ -124,7 +124,7 @@ module.exports.createLikeComment = async function(req,res){
                     const pullLike=await Comment.findByIdAndUpdate(obj.likeable,{$pull:{likes:obj._id}});
                     //Will delete like from the like schema.
                     const like=await Like.findByIdAndDelete(obj._id)
-                  //  req.flash('success','Like Removed');
+                    req.flash('success','Like Removed');
                     return res.redirect('back');
                 }catch(err){
                     console.log('error:',err);
@@ -139,7 +139,7 @@ module.exports.createLikeComment = async function(req,res){
             })
             comment.likes.push(like)
             comment.save();
-          //  req.flash('success','Comment Liked');
+            req.flash('success','Comment Liked');
             return res.redirect('back');
         }
         
