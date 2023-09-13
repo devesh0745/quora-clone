@@ -1,24 +1,41 @@
-<h1>Profile page</h1>
+<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/_post.css">
+<link rel="stylesheet" href="/css/_answer.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<div>
+
+<h1 id="profile-heading">Profile page</h1>
+<div id="login-user-profile">
+
+<img src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>" width="100">
+<p><strong><%= profile_user.name%></strong></p>
 <%if(locals.user.id==profile_user.id) {%>
+    <div id="update-user">
     <form action="/users/update/<%=profile_user.id%>" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" id="" placeholder="Your Name" value="<%=profile_user.name%>" required>
-        <input type="text" name="email" id="" placeholder="Your Email" value="<%=profile_user.email%>" required>
-       <input type="file" name="avatar" id="" placeholder="Profile Picture">
-        <input type="Submit" name="" id="" value="Update">
+        <div class="row">
+            <div class="col">
+              <input type="text" name="name" class="form-control" placeholder="Your name" aria-label="Your name" value="<%=profile_user.name%>" required>
+            </div>
+            <div class="col">
+              <input type="text" name="email" class="form-control" placeholder="Your email" aria-label="Your email" value="<%=profile_user.email%>" required>
+            </div>
+          </div>
+        <div id="update-profile-picture" class="col">
+            <input type="file" name="avatar" id="" placeholder="Profile Picture" class="form-control">
+        </div>
+        <div>
+            <input type="Submit" name="" id="" value="Update" class="btn btn-outline-primary">
+        </div>
+        
     </form>
-   
-    <img src="<%=user.avatar%>" alt="<%=user.name%>" width="100">
-
-    <p><%= profile_user.name%></p>
+    </div>
 
 <%}else {%>
-    <p><%= profile_user.name%></p>
     <p><%= profile_user.email%></p>
     <form action="/friend/create-friend" method="post">
         <input type="hidden" name="userId" id="" value="<%=profile_user._id%>">
-        <button id="btn" type="submit"><%if(locals.user.friendships.includes(profile_user._id)) {%>
+        <button id="btn" type="submit" class="btn btn-outline-primary"><%if(locals.user.friendships.includes(profile_user._id)) {%>
             Remove Friend
             <%}else {%>
             
@@ -26,19 +43,24 @@
                 <%}%>
         </button>
     </form>
-<%}%> 
+<%}%>
+<p>Following <%=profile_user.friendships.length%> people on Quora</p> 
 </div>
 <div id="profile_user">
-    
     <%if(locals.user.id!=profile_user.id) {%>
+        <div id="add-post">
         <form action="/posts/create-user-profile" id="new-post-form" method="post">
             <h4>POST</h4>
-            <textarea name="content"  cols="30" rows="4" placeholder="Ask anything..." required></textarea>
-            <input type="hidden" name="profile_user" value="<%=profile_user._id%>">
-            <input type="submit" value="submit">
+            <div class="form-floating">
+                <textarea name="content" cols="20" class="form-control" placeholder="Ask anything" id="floatingTextarea2" style="height: 100px" required></textarea>
+                <label for="floatingTextarea2">Ask anything...</label>
+                <input type="hidden" name="profile_user" value="<%=profile_user._id%>">
+              </div>
+              <button type="submit" class="btn btn-outline-info">submit</button>
         </form>
+        </div>
     <%}%>
-    <div>
+    <div id="all-post-ans-comment">
     <ul>
     <h4>Ask questions to <strong><%=profile_user.name%></strong></h4>
     <%for(post of allPost) {%>
@@ -47,36 +69,5 @@
     <% } %>
     </ul>
     </div>
-    <!--<div>
-        <h4>All post by <%=profile_user.name%></h4>
-        
-            <ul>
-                <%for(post of allPost) {%>
-                <%if(locals.user.id==post.user.id) {%>
-                <li>
-                    <%=post.content%>
-                    <ul>
-                        <%for(answer of post.answers) {%>
-                            <li>
-                                <%=answer.content%>
-                                <%=answer.user.name%>
-                            </li>
-                            <ul>
-                                <%for(comment of answer.comments) {%>
-                                    <li>
-                                        <%=comment.content%>
-                                        <%=comment.user.name%>
-                                    </li>
-                                <%}%>
-                            </ul>
-                        <%}%>
-                    </ul>
-                </li>
-                <%}%>
-            </ul>
-
-        <%}%>
-    </div>-->
-    
 </div>
 

@@ -1,13 +1,50 @@
+
 .container-fliud{
     display: flex;
     flex-direction: row;
 }
-#ul{
+.nav-bar{
+     background-image: linear-gradient(to right,#df3030 , #b21030);
+  }
+  
+
+.nav-list{
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
+    
+  }
+  
+.nav-list >  li {
+    float: left;
+  }
 
+
+a{ 
+    display: block;
+    padding: 10px 30px;
 }
-.nav-list{
-    padding-right: 15px;
+
+
+#home-icon{
+    color: black;
+}
+
+#name-tag{
+    display: block;
+    padding: 10px 30px;
+    font-size: large;
+    font-weight:500;
+    padding-top: 10px;
+}
+.sign-in-out-tag{
+    font-size: large;
+    color: black;
+}
+
+.sign-in-out{
+    padding-left: 25px;
 }
