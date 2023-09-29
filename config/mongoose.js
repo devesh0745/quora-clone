@@ -1,6 +1,9 @@
 const mongoose=require('mongoose');
+const env=require('./environment');
+require("dotenv").config();
 
-mongoose.connect('mongodb://0.0.0.0/Quora_development');
+
+mongoose.connect(process.env.MONGODB);
 
 const db=mongoose.connection;
 

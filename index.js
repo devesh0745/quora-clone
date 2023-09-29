@@ -1,4 +1,6 @@
 const express=require('express');
+const env=require('./config/environment');
+const logger=require('morgan');
 const cookieParser=require('cookie-parser');
 const app=express();
 const port=9000;
@@ -25,7 +27,9 @@ app.use(cookieParser());
 
 app.use('/uploads',express.static(__dirname + '/uploads'));
 
-app.use(express.static('./assests'));
+app.use(logger(env.morgan.mode, env.morgan.options));
+
+app.use(express.static(env.assest_path));
 
 app.use(expressLayouts);
 
@@ -39,7 +43,7 @@ app.set('views','./views')
 
 app.use(session({
     store:MongoStore.create({
-        mongoUrl:"mongodb://0.0.0.0/Quora_development",
+        mongoUrl:process.env.MONGODB,
         autoRemove:'disabled'
     },
     async function(err){
@@ -50,7 +54,7 @@ app.use(session({
         }
     }),
     name:'Quora',
-    secret:"Something",
+    secret:env.session_cookie_key,
     saveUninitialized:false,
     resave:false,
     cookie:{maxAge:(1000 * 60 * 100)}

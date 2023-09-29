@@ -8,12 +8,13 @@
     
 }
 #post-ans-comment{
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
     margin-bottom: 5%;
     padding: 3%;
   /*  background-color:#1A5276 ;*/
     border-radius: 8px;
     width: 45vw;
+   /* margin-right: 7%;*/
 }
 #post-ans-comment > span{
     color:black;
@@ -42,7 +43,7 @@
     margin-top: 1%;
 }
 #post-content{
-    border: 1px solid rgb(231, 17, 17);
+    border: 1px solid rgb(56, 37, 94);
  /*   background-color: #0e4261;*/
     width: 40vw;
     padding: 2%;
@@ -56,7 +57,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 28vw;
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
     margin-left: 6%;
     padding-left: 4%;
     padding-right: 4%;
@@ -64,7 +65,7 @@
     padding-bottom: 2%;
     border-radius: 5px;
     height: 6vh;
-    background-color: rgb(189, 25, 25);
+    background-color:rgb(120, 143, 236);
 }
 /*#post-like-dislike > p{
     padding-left: 75%;
@@ -91,5 +92,5 @@
     margin: 5%;
 }
 .form-control{
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
 }

@@ -13,7 +13,7 @@
 }
 #answer-content{
     width: 38vw;
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
     padding: 2%;
     border-radius: 5px;
 
@@ -35,7 +35,7 @@
     font-size: 0.8rem;
     padding: 6px;
     width: 28vw;
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
     border-radius: 5px;
 /*    background-color: #0e4261;*/
 }
@@ -46,21 +46,21 @@
     flex-direction: row;
     justify-content: space-between;
     width: 28vw;
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
     padding-left: 4%;
     padding-right: 4%;
     padding-top: 1%;
     padding-bottom: 2%;
     border-radius: 5px;
     height: 6vh;
-    background-color: rgb(189, 25, 25);
+    background-color: rgb(120, 143, 236);
 }
 /*#answer-like-dislike > p{
     padding-left: 75%;
 }*/
 #answer-block{
     width:38vw;
-    border: 1px solid red ;
+    border: 1px solid rgb(56, 37, 94) ;
   /*  background-color:#153b53  ;*/
     border-radius: 8px; 
     margin-bottom: 5%;
@@ -100,14 +100,14 @@
     flex-direction: row;
     justify-content: space-between;
     width: 18vw;
-    border: 1px solid red;
+    border: 1px solid rgb(56, 37, 94);
     padding-left: 4%;
     padding-right: 4%;
     padding-top: 1%;
     padding-bottom: 2%;
     border-radius: 5px;
     height: 6vh;
-    background-color: rgb(189, 25, 25);
+    background-color:rgb(120, 143, 236) ;
 
 }
 /*#comment-like > p{

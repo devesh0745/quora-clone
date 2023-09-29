@@ -14,7 +14,6 @@ passport.use(new LocalStrategy({
         try{
             const user=await User.findOne({email:email});
             console.log(user);
-              console.log(password);
             if(!user || user.password!=password){
                 console.log('Invalid user name or password');
                 return done(null,false);
