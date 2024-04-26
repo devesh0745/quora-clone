@@ -58,4 +58,5 @@ const production={
     }
 }
 
-module.exports=eval(process.env.QUORA_ENVIRONMENT) == undefined ? development : eval(provess.env.QUORA_ENVIRONMENT);
+//module.exports=eval(process.env.QUORA_ENVIRONMENT) == undefined ? development : eval(process.env.QUORA_ENVIRONMENT);
+module.exports = process.env.QUORA_ENVIRONMENT === 'production' ? production : development;
